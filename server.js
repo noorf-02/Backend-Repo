@@ -15,6 +15,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 app.use(cors());
 const port = process.env.PORT; // keep note that your calling and declaring the correct variable from env
+const dbConnection = require('./ConnectDB/DBconnect');
+dbConnection();
 
 app.get('/', (req,res)=>{
     res.send('This is the Homepage');
