@@ -14,12 +14,17 @@ dotenv.config();
 const mongoose = require('mongoose');
 const cors = require('cors');
 app.use(cors());
-const port = process.env.URL;
+const port = process.env.PORT; // keep note that your calling and declaring the correct variable from env
 
 app.get('/', (req,res)=>{
-    res.send('This is the Homepage')
+    res.send('This is the Homepage');
+});
+
+app.all('/*path',(req,res)=>{
+    res.send('Sorry! This path does not exist.')
 })
 
-app.listen('port', ()=>{
-    console.log('the backend is running')
-})
+// keep note that the port isnt in a string
+app.listen(port, ()=>{
+    console.log(`The backend is running on ${port}`);
+});
