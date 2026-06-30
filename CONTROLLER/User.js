@@ -6,4 +6,9 @@ const createUser = async (req,res)=>{
     res.send(createdUser);
 }
 
-module.exports = { createUser }
+const getUser = async (req,res)=>{
+    const data = await Users.find({});
+    res.send(data);
+}
+
+module.exports = { createUser, getUser };
