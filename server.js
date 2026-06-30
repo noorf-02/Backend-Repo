@@ -17,6 +17,10 @@ app.use(cors());
 const port = process.env.PORT; // keep note that your calling and declaring the correct variable from env
 const dbConnection = require('./ConnectDB/DBconnect');
 dbConnection();
+const Router = require('./VIEW/User');
+app.use(express.json());
+
+app.use('/', Router);
 
 app.get('/', (req,res)=>{
     res.send('This is the Homepage');
@@ -30,3 +34,5 @@ app.all('/*path',(req,res)=>{
 app.listen(port, ()=>{
     console.log(`The backend is running on ${port}`);
 });
+
+// after the db connection we follow a MVC architecture to build a REST API 
